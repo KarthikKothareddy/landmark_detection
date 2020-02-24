@@ -124,6 +124,7 @@ class ConditionalGenerator(object):
         gauss_y, gauss_y_prob = get_coordinates(2, x_shape[1])
         gauss_x, gauss_x_prob = get_coordinates(1, x_shape[2])
         gauss_mu = K.stack([gauss_y, gauss_x], axis=2)
+        # return gauss_y, gauss_x
 
         gauss_xy = []
         for map_size in map_sizes:
@@ -136,6 +137,7 @@ class ConditionalGenerator(object):
             )
             gauss_xy.append(gauss_xy_)
         return gauss_mu, gauss_xy
+
 
     def simple_renderer(self, feat_hierarchy, n_final_out=3, final_res=128):
         filters = self._config.n_filters_render * 8
